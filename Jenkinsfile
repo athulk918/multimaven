@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git branch: '${BRANCH_NAME}', credentialsId: 'athulk918', url: 'git@github.com:athulk918/newmaven.git'
+        git branch: '${BRANCH_NAME}', credentialsId: 'athulk918', url: 'https://github.com/athulk918/multimaven.git'
       }
     }
     stage('Build') {
@@ -25,12 +25,6 @@ pipeline {
         sh 'mvn package'
       }
     }
-    stage("deploy"){
-            steps{
-                sshagent(['deploy_user']) {
-                 sh "scp -o StrictHostKeyChecking=no target/myProject-1.0-SNAPSHOT.jar ubuntu@35.174.204.206:/opt/apache-tomcat-8.5.65/webapps"
-                                    }
-            }
-    }
+    
   }
 }
