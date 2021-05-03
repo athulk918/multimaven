@@ -25,12 +25,6 @@ pipeline {
         sh 'mvn package'
       }
     }
-    stage("deploy"){
-            steps{
-                sshagent(['deploy_user']) {
-                 sh "scp -o StrictHostKeyChecking=no target/myProject-1.0-SNAPSHOT.jar ubuntu@35.174.204.206:/opt/apache-tomcat-8.5.65/webapps"
-                                    }
-            }
-    }
+    
   }
 }
