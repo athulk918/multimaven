@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git credentialsId: 'athulk918', url: 'git@github.com:athulk918/newmaven.git'
+        git branch: '${BRANCH_NAME}', credentialsId: 'athulk918', url: 'https://github.com/athulk918/multimaven.git'
       }
     }
     stage('Build') {
